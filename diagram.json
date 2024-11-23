@@ -1,45 +1,67 @@
 {
   "version": 1,
-  "author": "Arnaldo Viana",
+  "author": "Desenvolvedor IoT",
   "editor": "wokwi",
   "parts": [
-    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": -94.48, "left": 93.8, "attrs": {} },
     {
-      "type": "wokwi-dht22",
-      "id": "dht1",
-      "top": -109.39,
-      "left": -4.38,
-      "attrs": { "temperature": "15.9", "humidity": "54.5" }
+      "type": "wokwi-esp32-devkit-v1",
+      "id": "esp32",
+      "top": -100,
+      "left": -100,
+      "attrs": {}
     },
     {
-      "type": "wokwi-resistor",
-      "id": "r1",
-      "top": 3.76,
-      "left": 235.36,
-      "rotate": 90,
+      "type": "wokwi-dht22",
+      "id": "dht22",
+      "top": -50,
+      "left": 200,
       "attrs": {}
     },
     {
       "type": "wokwi-led",
-      "id": "led1",
-      "top": -71.08,
-      "left": 237.84,
+      "id": "led",
+      "top": 0,
+      "left": 200,
       "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "resistor_led",
+      "top": 0,
+      "left": 250,
+      "attrs": { "ohms": "220" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "button",
+      "top": 50,
+      "left": 200,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-pir-motion-sensor",
+      "id": "pir",
+      "top": 100,
+      "left": 200,
+      "attrs": {}
     }
   ],
   "connections": [
-    [ "dht1:VCC", "esp:5V", "red", [ "v0" ] ],
-    [ "r1:1", "led1:A", "green", [ "h0" ] ],
-    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
-    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
-    [ "esp:GND.1", "led1:C", "black", [ "h57.38", "v-24.75", "h-0.26" ] ],
-    [ "esp:15", "r1:2", "green", [ "h0" ] ],
-    [ "dht1:SDA", "esp:11", "green", [ "v0" ] ],
-    [ "dht1:VCC", "esp:3V3.1", "red", [ "v0" ] ],
-    [ "esp:D15", "r1:2", "green", [ "h48.85", "v0.4", "h17.97" ] ],
-    [ "esp:D12", "dht1:SDA", "gold", [ "h0" ] ],
-    [ "esp:3V3", "dht1:VCC", "red", [ "v-0.33", "h11.31", "v51.62", "h-195.79" ] ],
-    [ "esp:GND.2", "dht1:GND", "black", [ "h0" ] ]
+    // Conexões do DHT22
+    [ "dht22:GND", "esp32:GND.1", "black", [ "h0" ] ],
+    [ "dht22:VCC", "esp32:3V3", "red", [ "h0" ] ],
+    [ "dht22:DATA", "esp32:15", "green", [ "h0" ] ],
+    // Conexões do LED
+    [ "led:C", "esp32:GND.2", "black", [ "h0" ] ],
+    [ "led:A", "resistor_led:1", "red", [ "h0" ] ],
+    [ "resistor_led:2", "esp32:2", "green", [ "h0" ] ],
+    // Conexões do Botão
+    [ "button:1", "esp32:5V", "red", [ "h0" ] ],
+    [ "button:2", "esp32:4", "green", [ "h0" ] ],
+    // Conexões do Sensor PIR
+    [ "pir:GND", "esp32:GND.3", "black", [ "h0" ] ],
+    [ "pir:VCC", "esp32:5V", "red", [ "h0" ] ],
+    [ "pir:OUT", "esp32:5", "green", [ "h0" ] ]
   ],
   "dependencies": {}
 }
