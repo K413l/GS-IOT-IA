@@ -1,5 +1,8 @@
 # Projeto IoT com ESP32, MQTT, Node-RED e ThingSpeak
 
+## Objetivo e Descrição
+O nosso objetivo com a criação deste sistema é proporcionar uma solução inteligente e eficiente para o gerenciamento de energia em sua residência. Ao instalar um sensor de proximidade próximo à porta de entrada da sua casa, o sistema é capaz de identificar o momento exato em que você sai. Assim que você deixa a residência, todas as luzes são automaticamente apagadas, garantindo uma significativa redução no consumo de energia e, consequentemente, na sua conta de luz. Além disso, com um simples toque em um botão, é possível acender todas as luzes novamente quando necessário. Esta solução não só promove economia financeira, mas também contribui para a sustentabilidade ambiental.
+
 ## 📝 Sumário
 1. [Introdução](#introdução)
 2. [Configuração do Ambiente](#configuração-do-ambiente)
